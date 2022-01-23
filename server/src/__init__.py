@@ -26,7 +26,7 @@ def foo():
 
 @app.get('/favicon.ico')
 def favicon():
-    return FileResponse('../media/favicon.ico')
+    return FileResponse('../../media/favicon.ico')
 
 
 if __name__ == "__main__":
