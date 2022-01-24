@@ -65,10 +65,13 @@ async def registration():
     _row = []
     try:
         with bd:
-            pet_id, pet_species, pet_name, pet_owner = bd.execute("SELECT id, species, name, owner FROM PETS WHERE status = ? LIMIT 1", [('поступил')]).fetchall()[0]
+            pet_id, pet_species, pet_name, pet_owner = \
+            bd.execute("SELECT id, species, name, owner FROM PETS WHERE status = ? LIMIT 1", [('поступил')]).fetchall()[
+                0]
             pet_diagnosis = random.choice(diagnoses)
             bd.execute('UPDATE PETS SET status = ?, diagnosis = ? WHERE id = ?', ["в лечении", pet_diagnosis, pet_id])
 
-        return {"message": f"{pet_id} {pet_species} {pet_name} хозяина {pet_owner} в лечении с диагнозом: '{pet_diagnosis}'"}
+        return {
+            "message": f"{pet_id} {pet_species} {pet_name} хозяина {pet_owner} в лечении с диагнозом: '{pet_diagnosis}'"}
     except Exception:
         return {"message: некого принимать"}

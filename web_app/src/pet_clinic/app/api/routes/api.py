@@ -2,17 +2,14 @@ from fastapi import APIRouter
 from starlette.responses import FileResponse
 import sqlite3 as sl
 
-from app.api.routes import doctor, owner, site
+from pet_clinic.app.api.routes import doctor
+from pet_clinic.app.api.routes import owner
+from pet_clinic.app.api.routes import site
 
 router = APIRouter()
 router.include_router(doctor.router, tags=["doctor"], prefix="/doctor")
 router.include_router(owner.router, tags=["owner"], prefix="/owner")
 router.include_router(site.router, tags=["site"], prefix="/site")
-
-
-@router.get('/favicon.ico')
-def favicon():
-    return FileResponse('../media/favicon.ico')
 
 
 @router.get("/bd")

@@ -1,5 +1,3 @@
-from dataclasses import dataclass
-
 from fastapi import APIRouter, HTTPException
 from starlette.status import HTTP_400_BAD_REQUEST
 import sqlite3 as sl

@@ -22,6 +22,10 @@ def create_table():
         pass
 
 
-if __name__ == "__main__":
+def uvicorn_start():
     create_table()
-    uvicorn.run("app.main:app", host="127.0.0.1", port=8000, log_level="info", workers=4, reload=True)
+    uvicorn.run("pet_clinic.app.app:app", host="127.0.0.1", port=8000, log_level="info", workers=4, reload=True)
+
+
+if __name__ == "__main__":
+    uvicorn_start()

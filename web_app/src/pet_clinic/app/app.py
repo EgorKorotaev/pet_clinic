@@ -1,8 +1,6 @@
 from fastapi import FastAPI
-from starlette.responses import FileResponse
 
-from app import bd
-from app.api.routes.api import router as api_router
+from pet_clinic.app.api.routes.api import router as api_router
 
 
 def get_application() -> FastAPI:
