@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from starlette.responses import FileResponse
 
+from app import bd
 from app.api.routes.api import router as api_router
 
 
