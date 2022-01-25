@@ -9,7 +9,7 @@ router = APIRouter()
 
 @router.get("/registration")
 async def registration():
-    bd = sl.connect('pet_clinic.db')
+    bd = sl.connect("pet_clinic.db")
 
     diagnoses = [
         "Спал под дождем.",
@@ -59,19 +59,24 @@ async def registration():
         "Ожог промежности 8%",
         "Хадроз всего тела",
         "Беременность на почве алкоголизма,осложненная принятием спиртного",
-        "ВСЕ БОЛИТ"
+        "ВСЕ БОЛИТ",
     ]
 
     _row = []
     try:
         with bd:
-            pet_id, pet_species, pet_name, pet_owner = \
-            bd.execute("SELECT id, species, name, owner FROM PETS WHERE status = ? LIMIT 1", [('поступил')]).fetchall()[
-                0]
+            pet_id, pet_species, pet_name, pet_owner = bd.execute(
+                "SELECT id, species, name, owner FROM PETS WHERE status = ? LIMIT 1",
+                [("поступил")],
+            ).fetchall()[0]
             pet_diagnosis = random.choice(diagnoses)
-            bd.execute('UPDATE PETS SET status = ?, diagnosis = ? WHERE id = ?', ["в лечении", pet_diagnosis, pet_id])
+            bd.execute(
+                "UPDATE PETS SET status = ?, diagnosis = ? WHERE id = ?",
+                ["в лечении", pet_diagnosis, pet_id],
+            )
 
         return {
-            "message": f"{pet_id} {pet_species} {pet_name} хозяина {pet_owner} в лечении с диагнозом: '{pet_diagnosis}'"}
+            "message": f"{pet_id} {pet_species} {pet_name} хозяина {pet_owner} в лечении с диагнозом: '{pet_diagnosis}'"
+        }
     except Exception:
         return {"message: некого принимать"}
