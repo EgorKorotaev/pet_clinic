@@ -34,20 +34,20 @@ def create_test_table():
         """
     )
 
-    # db.execute(
-    #     """
-    #     DROP TABLE IF EXISTS pet_directives;
-    #     """
-    # )
-    # db.execute(
-    #     """
-    #     CREATE TABLE pet_directives (
-    #         id TEXT NOT NULL PRIMARY KEY,
-    #         pet_id TEXT,
-    #         directives_id TEXT,
-    #         data_created TEXT
-    #     );
-    #     """
-    # )
+    db.execute(
+        """
+        DROP TABLE IF EXISTS pet_directives;
+        """
+    )
+    db.execute(
+        """
+        CREATE TABLE pet_directives (
+            id TEXT NOT NULL PRIMARY KEY,
+            pet_id TEXT,
+            directives_id TEXT,
+            data_created TEXT
+        );
+        """
+    )
 
     return db
