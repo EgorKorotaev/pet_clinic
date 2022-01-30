@@ -2,7 +2,7 @@ import datetime
 from dataclasses import dataclass
 
 
-@dataclass  # TODO вынести куда-то и ньютайп
+@dataclass
 class Age:
     value: int
 

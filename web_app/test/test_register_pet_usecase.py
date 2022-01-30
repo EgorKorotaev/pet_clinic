@@ -34,4 +34,3 @@ def test_pet_is_registered():  # unit test
     pet_expected = Pet(id=pet_id, name=pet_name, data_created=datetime.date.today())
     pet_actual = test_storage.get_result()
     assert pet_expected == pet_actual
-    # assert pet_expected.age == pet_actual.age
